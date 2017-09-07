@@ -1,0 +1,4 @@
+{
+  "moduleIds": true,
+  "plugins": ["external-helpers", "transform-es2015-modules-kissy"]
+}

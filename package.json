@@ -1,0 +1,29 @@
+{
+  "name": "babel-plugin-transform-es2015-modules-kissy",
+  "version": "0.0.1",
+  "description": "This plugin transforms ES2015 modules to KISSY",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src -d lib --plugins=transform-runtime --presets=es2015,stage-2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Leo Wang",
+    "email": "leowang721@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "dependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "7.0.0-alpha.20",
+    "babel-template": "7.0.0-alpha.20"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-helper-plugin-test-runner": "7.0.0-alpha.20",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
+  }
+}
