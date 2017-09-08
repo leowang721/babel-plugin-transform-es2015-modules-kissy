@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-es2015-modules-kissy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This plugin transforms ES2015 modules to KISSY",
   "main": "lib/index.js",
   "scripts": {
@@ -12,8 +12,12 @@
     "email": "leowang721@gmail.com"
   },
   "license": "MIT",
+  "homepage": "https://github.com/leowang721/babel-plugin-transform-es2015-modules-kissy",
+  "repository": "git://github.com/leowang721/babel-plugin-transform-es2015-modules-kissy",
   "keywords": [
-    "babel-plugin"
+    "babel-plugin",
+    "KISSY",
+    "old module"
   ],
   "dependencies": {
     "babel-plugin-transform-es2015-modules-commonjs": "7.0.0-alpha.20",

@@ -128,9 +128,14 @@ export default function ({types: t}) {
           path.traverse(kissVisitor, this)
 
           const {sources, sourceNames, cssSources} = getSourcesAndNames(this.sources)
-          let moduleName = this.getModuleName()
+
+          let moduleName = this.file.opts.filenameRelative
+          if (this.file.opts.moduleRoot != null) {
+            var moduleRegEx = new RegExp('^' + this.file.opts.moduleRoot + '\\/?')
+            moduleName = moduleName.replace(moduleRegEx, '').replace(/\.es/, '')
+          }
           if (moduleName) {
-            t.stringLiteral(moduleName)
+            moduleName = t.stringLiteral(moduleName)
           }
 
           const {node} = path
@@ -146,7 +151,8 @@ export default function ({types: t}) {
               SOURCE_NAMES: sourceNames,
               SOURCES: sources,
               FACTORY: factory,
-              CSS_SOURCES: cssSources
+              CSS_SOURCES: cssSources,
+              MODULE_NAME: moduleName
             })
           ]
         }
