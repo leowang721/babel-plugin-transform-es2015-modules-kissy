@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-es2015-modules-kissy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This plugin transforms ES2015 modules to KISSY",
   "main": "lib/index.js",
   "scripts": {

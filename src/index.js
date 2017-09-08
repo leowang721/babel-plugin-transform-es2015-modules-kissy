@@ -13,7 +13,7 @@ const buildDefine = template(`
 `)
 
 const buildFactory = template(`
-  (function (S, SOURCE_NAMES) {
+  (function (SOURCE_NAMES) {
     var exports = {}
     BODY;
     return exports.default;
@@ -52,14 +52,20 @@ export default function ({types: t}) {
     const cssSources = []
 
     let hasSeenNonBareRequire = false
+    let kissyIndex = -1
     for (let i = sourcesFound.length - 1; i > -1; i--) {
       const source = sourcesFound[i]
 
       if (/^css!/.test(source[1].value)) {
         cssSources.unshift(Object.assign({}, source[1], {value: source[1].value.replace(/^css!/, '')}))
       } else {
-        sources.unshift(source[1])
+        if (source[1].value === 'KISSY') {
+          kissyIndex = i
+        } else {
+          sources.unshift(source[1])
+        }
         sourceNames.unshift(source[0])
+        
         // bare import at end, no need for param
         if (!hasSeenNonBareRequire && source[2] === true) {
           continue
@@ -69,6 +75,13 @@ export default function ({types: t}) {
         usedSources.unshift(source[1])
       }
     }
+
+    if (kissyIndex === -1) {
+      sourceNames.unshift(t.identifier('S'));
+    } else if (kissyIndex > 0) {
+      var item = sourceNames.splice(kissyIndex, 1)[0];
+      sourceNames.unshift(item);
+    } 
 
     return {sources, sourceNames, usedSources, cssSources}
   }

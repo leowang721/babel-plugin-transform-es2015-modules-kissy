@@ -1,5 +1,5 @@
 # babel-plugin-transform-es2015-modules-amd
-> This plugin transforms ES2015 modules to [KISSY v1.3 Modules](http://docs.kissyui.com/1.3/docs/html/api/seed/loader/add.html).
+> This plugin transforms ES2015 modules to [KISSY Modules](http://docs.kissyui.com/1.3/docs/html/api/seed/loader/add.html).
 
 ## Installation
 
@@ -36,6 +36,39 @@ require("babel-core").transform("code", {
 ### Options
 
 See options for `babel-plugin-transform-es2015-commonjs`.
+
+### For Kissy Module ID
+
+each module should have a unique id, by default it would be the path of current file, we can set options like this:
+```
+{
+  moduleIds: true,
+  moduleRoot: path.resolve(__dirname, '../../../src')  // this is a absolute path, calculated from script file path
+}
+```
+
+For example:
+
+module path: `/Users/leowang/work/sampleproj/src`
+file path: `/Users/leowang/work/sampleproj/src/home/view/index.es`
+the calculate module name would be: `home/view/index`
+
+### about KISSY
+
+import KISSY first, even you won't use it, this is recommanded.
+
+```
+import 'KISSY'
+// or
+import {each} from 'KISSY'  // this is also ok
+```
+
+However, you can ignore the recommandation, don't import KISSY, that would make the compile progress a little bit slower.
+Under these circumstances, we will add `S` automatically, you can use KISSY like this:
+
+```
+S.each(...)
+```
 
 ## Examples
 
